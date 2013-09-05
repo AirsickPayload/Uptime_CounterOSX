@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E3067" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="History" syncable="YES">
+        <attribute name="end" attributeType="Date" defaultDateTimeInterval="378691200" defaultValueString="2013-01-01 00:00:00" syncable="YES"/>
+        <attribute name="seconds" optional="YES" attributeType="Integer 64" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="start" attributeType="Date" defaultDateTimeInterval="378691200" defaultValueString="2013-01-01 00:00:00" indexed="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" minValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="History" positionX="-72" positionY="425" width="144" height="103"/>
+    </elements>
+</model>
