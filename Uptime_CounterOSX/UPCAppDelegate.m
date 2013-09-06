@@ -18,7 +18,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "UPCAppDelegate.h" 
+#import "UPCAppDelegate.h"
 
 @implementation UPCAppDelegate
 
@@ -36,6 +36,8 @@
     [self startCounterThread];
     [[self window] setLevel: NSNormalWindowLevel];
     [[self appStartCount] setStringValue:[[NSString alloc] initWithFormat:@"Times launched: %@", [counter returnAppStartCount]]];
+    lowPower = NO;
+    [[self lowPowerOutlet] setState:NSOffState];
 }
 
 - (void) startCounterThread{
@@ -47,19 +49,23 @@
     NSInteger time = 0;
     while(true)
     {
-        [counter update];
-        [[self currentUptimeText] setStringValue:[counter returnTimerString]];
-        [NSThread sleepForTimeInterval:1.0];
-        if(time == interval)
+        if(lowPower){[NSThread sleepForTimeInterval:1.0]; [counter countUp];}
+        else
         {
-            [counter save];
-            [tableController updateList:[counter getCompleteTableArray]];
-            [[self tableViewOutlet] reloadData];
-            [[self longestTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Longest: %@", [counter returnLongestTimeString]]];
-            [[self totalTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Total: %@", [counter returnTotalTimeString]]];
-            time = 0;
+            [counter update];
+            [[self currentUptimeText] setStringValue:[counter returnTimerString]];
+            [NSThread sleepForTimeInterval:1.0];
+            if(time == interval)
+            {
+                [counter save];
+                [tableController updateList:[counter getCompleteTableArray]];
+                [[self tableViewOutlet] reloadData];
+                [[self longestTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Longest: %@", [counter returnLongestTimeString]]];
+                [[self totalTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Total: %@", [counter returnTotalTimeString]]];
+                time = 0;
+            }
+            else { time = time + 1; }
         }
-        else { time = time + 1; }
     }
 }
 
@@ -68,6 +74,20 @@
     [[NSUserDefaults standardUserDefaults] setInteger:[tmpval integerValue]*60 forKey:@"updateInterval"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     interval = [tmpval integerValue]*60;
+}
+
+- (IBAction)lowPowerModeClick:(NSButton *)sender {
+    if(lowPower)
+    {
+        lowPower = NO; [counter currentDataUpdate];
+        [[self currentUptimeText] setStringValue:[counter returnTimerString]];
+        [counter save];
+        [tableController updateList:[counter getCompleteTableArray]];
+        [[self tableViewOutlet] reloadData];
+        [[self longestTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Longest: %@", [counter returnLongestTimeString]]];
+        [[self totalTimeFieldOutlet] setStringValue:[[NSString alloc] initWithFormat:@"Total: %@", [counter returnTotalTimeString]]];
+    } else { lowPower = YES;}
+    if(lowPower) { [[self lowPowerOutlet] setState:NSOnState];} else { [[self lowPowerOutlet] setState:NSOffState];}
 }
 
 - (void)setUpIconSettings

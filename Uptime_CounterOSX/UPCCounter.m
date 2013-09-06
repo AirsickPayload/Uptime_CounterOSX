@@ -131,6 +131,10 @@ static NSInteger sort(NSNumber *n1, NSNumber *n2, void *context) {
     [self countUp];
 }
 
+- (void) currentDataUpdate{
+    currentDate = [[NSDate alloc] init];
+}
+
 - (void) save{
     [runtimeEntity setValue:currentDate forKey:@"end"];
     NSNumber *diff = [self convertToSeconds];

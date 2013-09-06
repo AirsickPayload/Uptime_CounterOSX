@@ -33,6 +33,7 @@ static NSUInteger total;
 - (void)update;
 - (void)save;
 - (void)countUp;
+- (void)currentDataUpdate;
 - (NSArray *)getRawTableArray;
 - (NSMutableArray *)getCompleteTableArray;
 - (NSString *)returnTimerString;

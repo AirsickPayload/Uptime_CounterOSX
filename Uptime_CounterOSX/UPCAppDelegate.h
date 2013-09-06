@@ -3,7 +3,7 @@
 //  Uptime_CounterOSX
 //
 //  Copyright (c) 2013 Alan Matuszczak.
-//  Contact: al4n00@gmail.coms
+//  Contact: al4n00@gmail.com
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation, either version 3 of the License, or
@@ -31,6 +31,7 @@ static NSInteger interval;
     UPCCounter *counter;
     UPCTableViewController *tableController;
     NSManagedObjectContext *context;
+    BOOL lowPower;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -46,6 +47,7 @@ static NSInteger interval;
 - (IBAction)statusBarClick:(NSButton *)sender;
 - (IBAction)updateTableClick:(NSButton *)sender;
 - (IBAction)updateIntervalClick:(NSButton *)sender;
+- (IBAction)lowPowerModeClick:(NSButton *)sender;
 
 @property (weak) IBOutlet NSButton *setInitHideStateStatus;
 @property (weak) IBOutlet NSButton *statusBarOutlet;
@@ -56,6 +58,7 @@ static NSInteger interval;
 @property (weak) IBOutlet NSTextField *totalTimeFieldOutlet;
 @property (weak) IBOutlet NSTextField *longestTimeFieldOutlet;
 @property (weak) IBOutlet NSTextField *appStartCount;
+@property (weak) IBOutlet NSButton *lowPowerOutlet;
 
 - (void)setUpIconSettings;
 - (void)startCounterThread;
