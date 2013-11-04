@@ -32,12 +32,14 @@
     [self setUpIconSettings];
     tableController = [[UPCTableViewController alloc] initWithContext:context];
     counter = [[UPCCounter alloc] initWithContext:context];
-    [counter save];
     [self startCounterThread];
     [[self window] setLevel: NSNormalWindowLevel];
     [[self appStartCount] setStringValue:[[NSString alloc] initWithFormat:@"Times launched: %@", [counter returnAppStartCount]]];
     lowPower = NO;
     [[self lowPowerOutlet] setState:NSOffState];
+    [counter update];
+    [counter save];
+    [[self currentUptimeText] setStringValue:[counter returnTimerString]];
 }
 
 - (void) startCounterThread{

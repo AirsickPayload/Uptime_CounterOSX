@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>090FD587-A8F8-49F8-9C17-84980B32A34B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Uptime_CounterOSX</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EAD0B656-8FC7-4283-9508-A7A4556CBF25</key>
+		<string>https://github.com/AirsickPayload/Uptime_CounterOSX.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Uptime_CounterOSX.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EAD0B656-8FC7-4283-9508-A7A4556CBF25</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AirsickPayload/Uptime_CounterOSX.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EAD0B656-8FC7-4283-9508-A7A4556CBF25</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EAD0B656-8FC7-4283-9508-A7A4556CBF25</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Uptime_CounterOSX</string>
+		</dict>
+	</array>
+</dict>
+</plist>

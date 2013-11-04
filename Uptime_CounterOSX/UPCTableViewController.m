@@ -51,7 +51,18 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     NSString *identifier =  [tableColumn identifier];
-    NSString *formatted = [[NSString alloc] initWithFormat:@"%@", [[list objectAtIndex:row] valueForKey:identifier]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *formatted;
+    if( ![identifier  isEqual: @"time"])
+    {
+        formatted = [[NSString alloc] initWithFormat:@"%@", [dateFormatter stringFromDate:[[list objectAtIndex:row] valueForKey:identifier]]];
+    }
+    else
+    {
+        formatted = [[NSString alloc] initWithFormat:@"%@", [[list objectAtIndex:row] valueForKey:identifier]];
+    }
     return formatted;
 }
 @end
