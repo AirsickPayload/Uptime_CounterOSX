@@ -40,6 +40,8 @@
     [counter update];
     [counter save];
     [[self currentUptimeText] setStringValue:[counter returnTimerString]];
+    [[NSProcessInfo processInfo] disableAutomaticTermination:@"AppNap Prevention"];
+    [[NSProcessInfo processInfo] disableSuddenTermination];
 }
 
 - (void) startCounterThread{
@@ -54,9 +56,9 @@
         if(lowPower){[NSThread sleepForTimeInterval:1.0]; [counter countUp];}
         else
         {
+            [NSThread sleepForTimeInterval:1.0];
             [counter update];
             [[self currentUptimeText] setStringValue:[counter returnTimerString]];
-            [NSThread sleepForTimeInterval:1.0];
             if(time == interval)
             {
                 [counter save];
