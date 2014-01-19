@@ -45,18 +45,19 @@
 }
 
 - (void) startCounterThread{
-    NSThread* myThread = [[NSThread alloc] initWithTarget:self selector:@selector(counterLoop) object:nil];
-    [myThread start];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                      
+                                                      target:self selector:@selector(counterLoop)
+                      
+                                                    userInfo:nil repeats:YES];
 }
 
 - (void)counterLoop{
     NSInteger time = 0;
-    while(true)
-    {
-        if(lowPower){[NSThread sleepForTimeInterval:1.0]; [counter countUp];}
+
+        if(lowPower){[counter countUp];}
         else
         {
-            [NSThread sleepForTimeInterval:1.0];
             [counter update];
             [[self currentUptimeText] setStringValue:[counter returnTimerString]];
             if(time == interval)
@@ -70,7 +71,6 @@
             }
             else { time = time + 1; }
         }
-    }
 }
 
 - (IBAction)updateIntervalClick:(NSButton *)sender {
